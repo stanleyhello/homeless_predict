@@ -97,7 +97,8 @@ y_pred_test = model.predict(X_test_sc).ravel()
 print("Test R^2:", r2_score(y_test, y_pred_test))
 
 # ---------- 7. SAVE ARTIFACTS ----------
-# a) Keras model
+# a) Keras model (saved in both newer .keras format for the app and legacy .h5 for debugging)
+model.save("model_keras.keras")
 model.save("model_keras.h5")
 
 # b) Scaler and feature order

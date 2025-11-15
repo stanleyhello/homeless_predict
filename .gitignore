@@ -1,2 +1,29 @@
+# Virtual environments
 venv/
 venv-oldtf/
+
+# Python cache / build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+# OS / editor clutter
+.DS_Store
+.vscode/
+.idea/
+
+# Local logs / notebooks / misc
+*.log
+
+# Keep data/model assets local unless explicitly whitelisted
+*.csv
+*.joblib
+*.h5
+*.keras
+
+# Artifacts the Streamlit app depends on
+!dataset.csv
+!last_row_2023.csv
+!feature_cols.joblib
+!scaler.joblib
+!model_keras.keras
