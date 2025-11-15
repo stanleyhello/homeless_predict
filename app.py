@@ -168,8 +168,8 @@ with prediction_container:
 
 st.markdown("---")
 
-tab_train, tab_use, tab_limits = st.tabs(
-    ["HOW WE TRAINED THE MODEL", "USE CASES", "LIMITATIONS"]
+tab_train, tab_use, tab_health, tab_limits = st.tabs(
+    ["HOW WE TRAINED THE MODEL", "USE CASES", "Impact on Healthcare", "LIMITATIONS"]
 )
 
 with tab_train:
@@ -231,6 +231,20 @@ This model can support San Diego organizations working on homelessness response,
   - Operational planning for shelter demand and outreach coverage.
   - Staffing and supply preparation (food, hygiene, transportation) when higher counts are expected.
   - Coordinating response with nonprofit partners in anticipation of increased encampment activity.
+"""
+    )
+
+with tab_health:
+    st.markdown(
+        """
+#### Improved resource allocation
+Forecasting homelessness helps healthcare providers and outreach teams anticipate changes in demand for emergency care, chronic disease management, behavioral health, and street medicine. This keeps staffing, supplies, and mobile outreach assets focused where they are most needed.
+
+#### Planning for infectious disease risk
+Rising unsheltered homelessness can elevate risks for influenza, COVID-19, hepatitis A, and other communicable diseases. Knowing when spikes may occur lets public health teams schedule vaccination drives, sanitation support, and targeted interventions ahead of time.
+
+#### Improved budgeting and planning
+Healthcare systems and public health departments can incorporate forecasts into longer-term planning and budget requests. Data-driven projections strengthen the case for medical respite beds, outreach programs, mental health services, and other essential healthcare responses.
 """
     )
 
