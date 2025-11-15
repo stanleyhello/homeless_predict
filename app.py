@@ -82,7 +82,10 @@ st.write(
     "in downtown San Diego for the following month. Adjust the parameters to see "
     "how changes in conditions may affect next month's projected count."
 )
-st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
+# st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
+st.subheader("Using data through August 2023, this tool predicts the homeless population "
+    "in downtown San Diego for the following month. Adjust the parameters to see "
+    "how changes in conditions may affect next month's projected count.")
 
 # ------------------------------
 # SLIDERS — only for features users can modify
