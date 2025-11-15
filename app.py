@@ -76,16 +76,15 @@ cpi3_0 = get_val("cpi_lag3")
 # STREAMLIT PAGE
 # ------------------------------
 
-st.title("Homelessness Forecast Tool")
+st.title("Housing Insecurity Predictor")
 st.write(
     "Using data through August 2023, this tool predicts the homeless population "
     "in downtown San Diego for the following month. Adjust the parameters to see "
     "how changes in conditions may affect next month's projected count."
 )
-# st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
-st.subheader("Using data through August 2023, this tool predicts the homeless population "
-    "in downtown San Diego for the following month. Adjust the parameters to see "
-    "how changes in conditions may affect next month's projected count.")
+st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
+
+prediction_container = st.container()
 
 # ------------------------------
 # SLIDERS — only for features users can modify
@@ -163,8 +162,9 @@ y_pred = float(model.predict(X_scaled)[0][0])
 # DISPLAY RESULT
 # ------------------------------
 
-st.markdown("### Predicted Homeless Count:")
-st.metric(label=TARGET_LABEL, value=int(round(y_pred)))
+with prediction_container:
+    st.markdown("### Projected Unhoused Population:")
+    st.metric(label=TARGET_LABEL, value=int(round(y_pred)))
 
 st.markdown("---")
 
