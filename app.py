@@ -77,10 +77,10 @@ cpi3_0 = get_val("cpi_lag3")
 # ------------------------------
 
 st.title("Homelessness Forecast Tool")
-st.markdown(
+st.write(
     "Using data through August 2023, this tool predicts the homeless population "
     "in downtown San Diego for the following month. Adjust the parameters to see "
-    "how changes in conditions may affect next month’s projected count."
+    "how changes in conditions may affect next month's projected count."
 )
 st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
 
