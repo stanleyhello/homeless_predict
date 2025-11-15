@@ -168,7 +168,9 @@ with prediction_container:
 
 st.markdown("---")
 
-tab_train, tab_use = st.tabs(["HOW WE TRAINED THE MODEL", "USE CASES"])
+tab_train, tab_use, tab_limits = st.tabs(
+    ["HOW WE TRAINED THE MODEL", "USE CASES", "LIMITATIONS"]
+)
 
 with tab_train:
     st.markdown(
@@ -229,5 +231,28 @@ This model can support San Diego organizations working on homelessness response,
   - Operational planning for shelter demand and outreach coverage.
   - Staffing and supply preparation (food, hygiene, transportation) when higher counts are expected.
   - Coordinating response with nonprofit partners in anticipation of increased encampment activity.
+"""
+    )
+
+with tab_limits:
+    st.markdown(
+        """
+#### Short-term prediction window only
+- Forecasts just one month ahead and requires the latest real data to predict the next month.
+- Best used as a “what-if” scenario explorer rather than a long-term forecasting system.
+- Multi-year projections would likely need a simulation or system-dynamics model.
+
+#### Limited historical data
+- Only 115 months of observations, which is small for ML models tackling complex social issues.
+- Captures broad patterns but may miss rare events or sharp spikes.
+
+#### Missing external factors
+- Excludes hard-to-measure drivers such as migration, encampment sweeps, sudden shelter changes, or targeted interventions.
+- These factors can shift monthly counts in ways the model cannot capture.
+
+#### Accuracy depends on realistic input ranges
+- Sliders let you change next month’s temperature, rent, unemployment, etc., but the model is only reliable within historical ranges.
+- Extreme values (e.g., jumping unemployment from 4% to 25% in one month) produce unrealistic outputs.
+- Interpret results as most meaningful when exploring small or moderate adjustments.
 """
     )
