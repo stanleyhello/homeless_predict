@@ -166,11 +166,13 @@ y_pred = float(model.predict(X_scaled)[0][0])
 st.markdown("### Predicted Homeless Count:")
 st.metric(label=TARGET_LABEL, value=int(round(y_pred)))
 
-st.markdown(
-    """
----
-### HOW WE TRAINED THE MODEL
+st.markdown("---")
 
+tab_train, tab_use = st.tabs(["HOW WE TRAINED THE MODEL", "USE CASES"])
+
+with tab_train:
+    st.markdown(
+        """
 #### Choosing Our Scope
 We focused specifically on downtown San Diego, because this area has the most consistent and long-running data on unsheltered homelessness. The Downtown San Diego Partnership (DSDP) provides a monthly observational count of individuals experiencing homelessness, giving us the strongest time series foundation.
 
@@ -208,4 +210,24 @@ We focused specifically on downtown San Diego, because this area has the most co
 #### Other Models Tried
 - **Prophet (Time-Series Model)** — Performed poorly; failed to capture structure (R² = –1.017).
 """
-)
+    )
+
+with tab_use:
+    st.markdown(
+        """
+This model can support San Diego organizations working on homelessness response, planning, and policy decisions. Below are examples of how key agencies could benefit from forecasting monthly homelessness trends.
+
+- **Regional Task Force on Homelessness (RTFHSD)** — Leads research, policy, and funding distribution across the region.
+  - Funding justification for emergency dollars or expanded beds when an uptick is predicted.
+  - Policy evaluations and “what-if” simulations by adjusting inputs such as rent, unemployment, temperature, and evictions.
+  - Communicating expected trends to policymakers and service providers earlier in the month.
+- **County of San Diego – Office of Evaluation, Performance, and Analytics (OEPA)** — Provides analytics to county leadership and programs.
+  - Early detection of upcoming increases via monthly briefings.
+  - Resource allocation recommendations for outreach teams, funding, or housing vouchers.
+  - Economic trend analysis by testing how rent, CPI, and unemployment shifts could translate into homelessness spikes.
+- **City of San Diego – Homelessness Strategies & Solutions (HSS)** — Operates shelters, outreach, safe parking, and housing navigation.
+  - Operational planning for shelter demand and outreach coverage.
+  - Staffing and supply preparation (food, hygiene, transportation) when higher counts are expected.
+  - Coordinating response with nonprofit partners in anticipation of increased encampment activity.
+"""
+    )
