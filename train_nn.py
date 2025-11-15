@@ -109,4 +109,4 @@ joblib.dump(feature_cols, "feature_cols.joblib")
 df_sorted = df.sort_values("dt")
 last_row = df_sorted.iloc[[-1]][feature_cols + ["year_month"]]  # keep features + date
 last_row.to_csv("last_row_2023.csv", index=False)
-print("Artifacts saved: model_keras.h5, scaler.joblib, feature_cols.joblib, last_row_2023.csv")
+print("Artifacts saved: model_keras.keras, model_keras.h5, scaler.joblib, feature_cols.joblib, last_row_2023.csv")
