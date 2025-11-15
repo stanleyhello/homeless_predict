@@ -77,6 +77,11 @@ cpi3_0 = get_val("cpi_lag3")
 # ------------------------------
 
 st.title("Homelessness Forecast Tool")
+st.markdown(
+    "Using data through August 2023, this tool predicts the homeless population "
+    "in downtown San Diego for the following month. Adjust the parameters to see "
+    "how changes in conditions may affect next month’s projected count."
+)
 st.subheader(f"Adjust inputs to forecast {TARGET_LABEL}")
 
 # ------------------------------
@@ -189,7 +194,7 @@ We focused specifically on downtown San Diego, because this area has the most co
 - **Homeless Count (Target Variable)** — Source: Downtown San Diego Partnership (DSDP), monthly observational count in downtown San Diego.
 - **Average Monthly Temperature** — Source: NOAA Weather NOWDATA (San Diego International Airport); chosen because the airport shares the modeled geography.
 - **ZORI (Zillow Observed Rent Index)** — Mean rent for listings in the 35th–65th percentile range covering the City of San Diego.
-- **Unemployment Rate** — Monthly unemployment rate for San Diego County.
+- **Unemployment Rate** — Monthly unemployment rate for San Diego County. Source: Federal Reserve Bank of St. Louis (<https://fred.stlouisfed.org/series/CASAND5URN/>)
 - **Evictions** — Source: CalMatters (<https://calmatters.org/housing/homelessness/2023/11/california-evictions-post-pandemic/>); chart by Jeanne Kuang (CalMatters), analysis by Tim Thomas (UC Berkeley Urban Displacement).
 - **CPI (Consumer Price Index)** — Source: U.S. Bureau of Labor Statistics (<https://www.bls.gov/charts/consumer-price-index/consumer-price-index-by-category.htm#>); reflects inflationary pressure on households.
 - **Precipitation** — Source: RCC ACIS Climate Data (<https://scacis.rcc-acis.org/>); total monthly precipitation for San Diego.
