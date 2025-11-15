@@ -14,12 +14,11 @@ APP_DIR = Path(__file__).resolve().parent
 model = load_model(APP_DIR / "model_keras.keras", compile=False)
 scaler = load(APP_DIR / "scaler.joblib")
 feature_cols = load(APP_DIR / "feature_cols.joblib")
-if isinstance(feature_cols, list):
-    FEATURE_COLUMNS = feature_cols
-elif hasattr(feature_cols, "columns"):
-    FEATURE_COLUMNS = list(feature_cols.columns)
-else:
-    FEATURE_COLUMNS = list(feature_cols)
+# Ensure the loaded object is always a simple 1-D list
+if hasattr(feature_cols, "columns"):
+    feature_cols = list(feature_cols.columns)
+elif not isinstance(feature_cols, list):
+    feature_cols = list(feature_cols)
 
 # Load the last known row (2023-08)
 base = pd.read_csv(APP_DIR / "last_row_2023.csv")
