@@ -169,7 +169,7 @@ with prediction_container:
 st.markdown("---")
 
 tab_train, tab_use, tab_health, tab_limits = st.tabs(
-    ["HOW WE TRAINED THE MODEL", "USE CASES", "Impact on Healthcare", "LIMITATIONS"]
+    ["HOW WE TRAINED THE MODEL", "USE CASES", "HEALTHCARE", "LIMITATIONS"]
 )
 
 with tab_train:
