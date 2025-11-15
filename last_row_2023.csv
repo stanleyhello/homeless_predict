@@ -1,0 +1,2 @@
+average_temp,ZORI,unemployment_rate,evictions,covid,cpi,precipitation,count_lag_3,count_lag_4,count_lag_5,count_lag_6,count_lag_7,count_lag_8,median_rent_city_lag1,avg_temp_lag1,unemployment_rate_lag1,evictions_lag1,precipitation_lag1,cpi_lag1,cpi_lag2,cpi_lag3,month,year,year_month
+56.3,2834.97306,3.0,736.0,0,7.1,1.58,1188.0,1160.0,902.0,1089.0,1029.0,1119.0,2848.894892,58.9,3.3,726.0,1.07,7.7,8.2,8.3,12,2022,2022-12
