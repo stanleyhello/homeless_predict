@@ -176,3 +176,47 @@ y_pred = float(model.predict(X_scaled)[0][0])
 
 st.markdown("### Predicted Homeless Count:")
 st.metric(label=TARGET_LABEL, value=int(round(y_pred)))
+
+st.markdown(
+    """
+---
+### HOW WE TRAINED THE MODEL
+
+#### Choosing Our Scope
+We focused specifically on downtown San Diego, because this area has the most consistent and long-running data on unsheltered homelessness. The Downtown San Diego Partnership (DSDP) provides a monthly observational count of individuals experiencing homelessness, giving us the strongest time series foundation.
+
+#### Collecting the Datasets
+- **Homeless Count (Target Variable)** — Source: Downtown San Diego Partnership (DSDP), monthly observational count in downtown San Diego.
+- **Average Monthly Temperature** — Source: NOAA Weather NOWDATA (San Diego International Airport); chosen because the airport shares the modeled geography.
+- **ZORI (Zillow Observed Rent Index)** — Mean rent for listings in the 35th–65th percentile range covering the City of San Diego.
+- **Unemployment Rate** — Monthly unemployment rate for San Diego County.
+- **Evictions** — Source: CalMatters (<https://calmatters.org/housing/homelessness/2023/11/california-evictions-post-pandemic/>); chart by Jeanne Kuang (CalMatters), analysis by Tim Thomas (UC Berkeley Urban Displacement).
+- **CPI (Consumer Price Index)** — Source: U.S. Bureau of Labor Statistics (<https://www.bls.gov/charts/consumer-price-index/consumer-price-index-by-category.htm#>); reflects inflationary pressure on households.
+- **Precipitation** — Source: RCC ACIS Climate Data (<https://scacis.rcc-acis.org/>); total monthly precipitation for San Diego.
+- **COVID Flag** — Binary feature marking March 2020 (emergency declarations) through June 2022 (end of emergency expansions and eviction moratoriums).
+
+#### Initial Modeling Approaches
+- **Ensemble Models** — Tried Random Forests and XGBoost; both severely overfit because of the small dataset and temporal structure.
+- **Neural Network Approach** — Implemented a lightweight neural network with batch normalization to capture non-linear patterns without needing large data volumes.
+
+#### Feature Engineering and Model Refinement
+- **Feature Selection** — Combined exploratory data analysis with SHAP values. Removed shelter beds (annual updates only) and Industrial Production Index (duplicated CPI trends and dampened monthly variation).
+- **Adding Lags** — Added lagged versions of key variables to capture delayed effects (e.g., rent shocks influencing homelessness months later). Tuned lag lengths individually to minimize bias and variance.
+
+#### Variance Issues and How We Fixed Them
+- **Challenge** — Model initially had too little variance, then too much after adding CPI lags.
+- **Solution** — Adopted a randomized 75%/25% train-test split instead of chronological splitting, which improved generalization and stabilized predictions.
+
+#### Final Neural Network Hyperparameters
+- Learning rate: 0.05 (exponential decay at 0.96)
+- Batch size: 5
+- Epochs: 500
+
+#### Final Model Performance
+- **R² score:** 0.58 — explains 58% of the month-to-month variation, strong for a small, noisy social dataset.
+- **Mean Absolute Error:** 159 people — acceptable for policy analysis and scenario testing (downtown counts typically range from 600–1,400), though not for precise monthly totals.
+
+#### Other Models Tried
+- **Prophet (Time-Series Model)** — Performed poorly; failed to capture structure (R² = –1.017).
+"""
+)
