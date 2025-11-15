@@ -125,21 +125,10 @@ precip = st.slider(
 )
 
 covid = st.slider(
-    "COVID Flag (0/1)",
+    "COVID Period (0/1)",
     min_value=0, max_value=1,
     value=int(covid0),
 )
-
-# ------------------------------
-# UI for lag features
-# ------------------------------
-
-lag3 = st.slider("Lag 3 homeless count", 0, 3000, int(lag3_0))
-lag4 = st.slider("Lag 4 homeless count", 0, 3000, int(lag4_0))
-lag5 = st.slider("Lag 5 homeless count", 0, 3000, int(lag5_0))
-lag6 = st.slider("Lag 6 homeless count", 0, 3000, int(lag6_0))
-lag7 = st.slider("Lag 7 homeless count", 0, 3000, int(lag7_0))
-lag8 = st.slider("Lag 8 homeless count", 0, 3000, int(lag8_0))
 
 # ------------------------------
 # BUILD INPUT ROW
@@ -154,14 +143,6 @@ row["unemployment_rate"] = unemp
 row["evictions"] = evict
 row["precipitation"] = precip
 row["covid"] = covid
-
-# Lag counts
-row["count_lag_3"] = lag3
-row["count_lag_4"] = lag4
-row["count_lag_5"] = lag5
-row["count_lag_6"] = lag6
-row["count_lag_7"] = lag7
-row["count_lag_8"] = lag8
 
 # Keep all other columns unchanged
 
